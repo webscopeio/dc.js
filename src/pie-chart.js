@@ -445,8 +445,12 @@ dc.pieChart = function (parent, chartGroup) {
     };
 
     function pieLayout () {
-        return d3.layout.pie().sort(null).value(_chart.cappedValueAccessor);
+        return _chart.pieLayout().sort(null).value(_chart.cappedValueAccessor);
     }
+
+    _chart.pieLayout = function () {
+        return d3.layout.pie();
+    };
 
     function sliceTooSmall (d) {
         var angle = (d.endAngle - d.startAngle);
